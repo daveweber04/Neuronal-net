@@ -4,14 +4,14 @@ import tkinter as tk
 import win32gui as wg
 from PIL import ImageGrab,Image
 import numpy as np
-model = load_model("handwritten.model")
+model = load_model("SGD.model")
 def prediction_of_digits(img):
     #bild umformatieren auf 28*28 Pixel
     img = img.resize((28,28))
     #umwandeln des rgb ins grayscale
-    img = img.convert('L')
+    img=img.convert('L')
     img = np.array(img)
-    #reformatieren des inputs (um sich dem modell anzupassen) des Modells und normalisieren
+    #reformatieren des inputs (um sich dem modell anzupassen) des Modells und normalisieren des Modells
     img = img.reshape(1,28,28)
     img = img/255.0
     #vorhersagen der klasse
@@ -21,23 +21,23 @@ class App(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
         self.x = self.y = 0
-        # Elemente kreiren
-        self.canvas = tk.Canvas(self, width=300, height=300, bg = "white", cursor="cross")
-        self.label = tk.Label(self, text="Thinking..", font=("Helvetica", 48))
-        self.classify_btn = tk.Button(self, text = "Recognise", command =         self.classify_handwriting)
-        self.button_clear = tk.Button(self, text = "Clear", command = self.clear_all)
-        # Struktur des Grids
+        # Elemente kreeiren
+        self.canvas = tk.Canvas(self, width=800, height=300, bg = "white", cursor="cross")
+        self.label = tk.Label(self, text="Thinking..", font=("Arial", 24))
+        self.classify_btn = tk.Button(self, text = "Recognise digits", command = self.classify_handwriting)
+        self.button_clear = tk.Button(self, text = "Clear all", command = self.clear_all)
+        # Struktur des grides
         self.canvas.grid(row=0, column=0, pady=2, sticky=W, )
         self.label.grid(row=0, column=1,pady=2, padx=2)
         self.classify_btn.grid(row=1, column=1, pady=2, padx=2)
         self.button_clear.grid(row=1, column=0, pady=2)
-        #Self canvas kreieren
+        #Self canvas kreeieren
         self.canvas.bind("<B1-Motion>", self.draw_lines)
     def clear_all(self):
         self.canvas.delete("all")
     def classify_handwriting(self):
         HWND = self.canvas.winfo_id()
-        rect = wg.GetWindowRect(HWND) # koordinaten des Canvas
+        rect = wg.GetWindowRect(HWND) # Koordinaten des Canvas
         im = ImageGrab.grab(rect)
         digit, acc = prediction_of_digits(im)
         self.label.configure(text= str(digit)+', '+ str(int(acc*100))+'%')
