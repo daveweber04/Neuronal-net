@@ -25,5 +25,6 @@ python ./NEURONAL_NETWORK_SGD.py
 # Danach das GUI.py ausführen
 python ./GUI.py
 
-# Um eine bessere Performance zu haben das 
+# Um eine bessere Performance zu haben das CNN model ausführen
+python ./NEURONAL_NETWORK_CNN
 ```
