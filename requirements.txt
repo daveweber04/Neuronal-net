@@ -1,0 +1,9 @@
+opencv-python
+numpy
+tensorflow
+matplotlib
+keras
+pywin32
+Pillow
+scikit-image
+ghostscript

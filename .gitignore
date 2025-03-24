@@ -1,0 +1,48 @@
+# Python-spezifische Dateien und Ordner
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+venv/
+env/
+.env
+# Jupyter Notebook spezifisch
+.ipynb_checkpoints
+
+# Betriebssystem-generierte Dateien
+.DS_Store
+Thumbs.db
+
+# Editor-spezifische Dateien (optional)
+*.swp
+*~
+.vscode/
+
+# Log-Dateien
+*.log
+
+# Daten (optional, SEHR WICHTIG, falls zutreffend!)
+data/
+*.csv
+*.pkl
+*.h5
+
+# Modelle (optional, SEHR WICHTIG, falls zutreffend!)
+models/
+*.h5
+*.keras
+*.pb
+checkpoints/
+
+# Andere temporäre Dateien und Caches
+temp/
+tmp/
+*.cache
+
+# Für Dokumentationsgeneratoren (z.B. Sphinx)
+docs/_build/
